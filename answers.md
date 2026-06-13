@@ -59,3 +59,23 @@ FINAL         116  200  156.86
 Q05             8   18   15.07
 L04            25   50   40.36
 Explanation: A script file (.awk) is created. The script uses associative arrays indexed by the code for each assignment to dynamically store the minimum, maximum, and total sum of grades. In the END block, the average is calculated and the columns are formatted as a table.
+
+## Task 6
+Command: awk -f student_grade.awk Lab03-data.csv
+Result: 
+Student      Percentage Grade
+Tomas             82.22     B
+Diana             62.08     D
+Andrew            73.69     C
+Lucia             89.53     B
+Kenji             86.45     B
+Chelsey           62.65     D
+Eliza             84.16     B
+Shane             93.12     A
+Noah              63.08     D
+Ava               81.43     B
+Maria             79.57     C
+Priya             71.04     C
+Jackson           78.64     C
+Sam               72.90     C
+Explanation: Sum all points earned and possible, accumulating them by student name using arrays. Finally, in the END block, calculate the total weighted percentage and an if/else if statement defines the corresponding grade.

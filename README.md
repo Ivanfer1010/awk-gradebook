@@ -4,7 +4,7 @@
 * Carrera: Ingeniería en Sistemas de Información 
 * Curso: Unix 
 
-## Archivos Presentes
+# Archivos Presentes
 * Lab03-data.csv - Base de datos de calificaciones de origen.
 * answers.md - Respuestas, comandos y explicaciones de las tareas.
 * assignment_report.awk - Script para el reporte de asignaciones (Task 5).
