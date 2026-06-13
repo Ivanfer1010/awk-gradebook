@@ -79,3 +79,23 @@ Priya             71.04     C
 Jackson           78.64     C
 Sam               72.90     C
 Explanation: Sum all points earned and possible, accumulating them by student name using arrays. Finally, in the END block, calculate the total weighted percentage and an if/else if statement defines the corresponding grade.
+
+## Task 7
+Command: ./run.sh Lab03-data.csv
+Result: 
+Student      Percentage Grade
+Andrew            73.69     C
+Ava               81.43     B
+Chelsey           62.65     D
+Diana             62.08     D
+Eliza             84.16     B
+Jackson           78.64     C
+Kenji             86.45     B
+Lucia             89.53     B
+Maria             79.57     C
+Noah              63.08     D
+Priya             71.04     C
+Sam               72.90     C
+Shane             93.12     A
+Tomas             82.22     B
+Explicación: El envoltorio de Bash comprueba que el archivo se recibe como argumento. A continuación, ejecuta el script AWK en dos partes: primero, utiliza 'head -n 1' para extraer e imprimir el encabezado fijo, y luego utiliza 'tail -n +2' canalizado a 'sort -k1,1' para tomar las líneas restantes y ordenarlas alfabéticamente utilizando la primera columna.
