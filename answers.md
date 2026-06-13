@@ -60,7 +60,7 @@ Q05             8   18   15.07
 L04            25   50   40.36
 Explanation: A script file (.awk) is created. The script uses associative arrays indexed by the code for each assignment to dynamically store the minimum, maximum, and total sum of grades. In the END block, the average is calculated and the columns are formatted as a table.
 
-## Task 6
+#Task 6
 Command: awk -f student_grade.awk Lab03-data.csv
 Result: 
 Student      Percentage Grade
@@ -80,7 +80,7 @@ Jackson           78.64     C
 Sam               72.90     C
 Explanation: Sum all points earned and possible, accumulating them by student name using arrays. Finally, in the END block, calculate the total weighted percentage and an if/else if statement defines the corresponding grade.
 
-## Task 7
+#Task 7
 Command: ./run.sh Lab03-data.csv
 Result: 
 Student      Percentage Grade
@@ -98,4 +98,52 @@ Priya             71.04     C
 Sam               72.90     C
 Shane             93.12     A
 Tomas             82.22     B
-Explicación: El envoltorio de Bash comprueba que el archivo se recibe como argumento. A continuación, ejecuta el script AWK en dos partes: primero, utiliza 'head -n 1' para extraer e imprimir el encabezado fijo, y luego utiliza 'tail -n +2' canalizado a 'sort -k1,1' para tomar las líneas restantes y ordenarlas alfabéticamente utilizando la primera columna.
+Explanation: The Bash wrapper checks that the file is received as an argument. It then executes the AWK script in two parts: first, it uses 'head -n 1' to extract and print the fixed header, and then it uses 'tail -n +2' piped to 'sort -k1,1' to take the remaining lines and sort them alphabetically using the first column.
+
+#Bonus
+Code:
+```awk
+BEGIN {
+    FS = ","
+    printf "%-12s %10s %5s\n", "Student", "Percentage", "Grade"
+}
+NR > 1 {
+    name = $1
+    earned[name] += $4
+    possible[name] += $5
+}
+END {
+    for (name in earned) {
+        pct = (earned[name] / possible[name]) * 100
+        total_class_pct += pct
+        student_count++
+        
+        if (pct >= 90)      grade = "A"
+        else if (pct >= 80) grade = "B"
+        else if (pct >= 70) grade = "C"
+        else if (pct >= 60) grade = "D"
+        else                grade = "E"
+        
+        printf "%-12s %10.2f %5s\n", name, pct, grade
+    }
+    class_avg = total_class_pct / student_count
+    printf "%-12s %10.2f\n", "Average", class_avg
+}
+
+result:
+Student      Percentage Grade
+Tomas             82.22     B
+Diana             62.08     D
+Andrew            73.69     C
+Lucia             89.53     B
+Kenji             86.45     B
+Chelsey           62.65     D
+Eliza             84.16     B
+Shane             93.12     A
+Noah              63.08     D
+Ava               81.43     B
+Maria             79.57     C
+Priya             71.04     C
+Jackson           78.64     C
+Sam               72.90     C
+Average           77.18

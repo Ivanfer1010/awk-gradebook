@@ -10,10 +10,10 @@ NR > 1 {
     possible[name] += $5
 }
 END {
-    # Ordenar la salida no es estrictamente necesario en awk estándar, 
-    # pero el profesor pide los datos procesados.
     for (name in earned) {
         pct = (earned[name] / possible[name]) * 100
+        total_class_pct += pct
+        student_count++
         
         if (pct >= 90)      grade = "A"
         else if (pct >= 80) grade = "B"
@@ -23,4 +23,6 @@ END {
         
         printf "%-12s %10.2f %5s\n", name, pct, grade
     }
+    class_avg = total_class_pct / student_count
+    printf "%-12s %10.2f\n", "Average", class_avg
 }
